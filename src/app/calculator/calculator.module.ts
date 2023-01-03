@@ -12,6 +12,9 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule
+  ],
+  exports: [
+    CalculatorViewComponent
   ]
 })
 export class CalculatorModule { }
