@@ -46,7 +46,6 @@ export class CalculatorViewComponent {
     } else {
       this.salida = this.salida + valor;
     }
-    console.log(this.salida);
   }
 
   //---
@@ -65,6 +64,7 @@ export class CalculatorViewComponent {
         this.resultado = this.numeroActual / this.numeroAnterior;
         break;
     }
+
     this.salida = 'S/' + this.resultado.toString();
     console.log(
       this.numeroActual,

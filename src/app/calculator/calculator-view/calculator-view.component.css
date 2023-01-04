@@ -11,6 +11,7 @@ p {
   width: 250px;
   height: 100%;
   border: 1px solid #e7e8ea;
+  overflow: hidden;
 }
 
 .header {
@@ -54,7 +55,9 @@ p {
   font-size: 1.4em;
   text-align: center;
   display: grid;
-  place-content: center;
+  justify-content: end;
+  align-items: center;
+  margin-right: 10px;
 }
 /* calculadora */
 
@@ -106,7 +109,7 @@ button:hover {
 .operaciones button:last-child {
   grid-row: 3/5;
   background-color: #06b6d4;
-  color: #e7e8ea;
+  color: #fff;
 }
 
 /* footer */
