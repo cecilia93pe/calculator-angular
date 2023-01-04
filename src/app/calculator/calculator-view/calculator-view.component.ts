@@ -17,7 +17,6 @@ export class CalculatorViewComponent {
 
   //--
   agregar(valor: string): void {
-    this.salida = '';
     if (this.operaciones.includes(valor)) {
       this.operador = valor;
       this.numeroActual = Number(this.salida.substring(2));
@@ -30,7 +29,7 @@ export class CalculatorViewComponent {
       this.calcular();
     } else if (valor === 'C') {
       // this.limpiar();
-    } else if (this.salida === '') {
+    } else if (this.salida === '' || this.salida === '0') {
       this.salida = 'S/' + valor;
     } else if (this.salida[this.salida.length - 1] === this.operador) {
       this.salida = this.salida + 'S/' + valor;
