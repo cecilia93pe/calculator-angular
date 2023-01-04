@@ -101,6 +101,8 @@ button {
 
 .operaciones button:last-child {
   grid-row: 3/5;
+  background-color: #06b6d4;
+  color: #e7e8ea;
 }
 
 /* footer */

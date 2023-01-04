@@ -8,36 +8,62 @@
       </div>
     </div>
     <div class="resultado">
-      <p>45.9</p>
+      <p>{{ salida }}</p>
     </div>
   </div>
-  <form class="content">
+  <div class="content">
     <div class="signos">
-      <button>/</button>
-      <button>x</button>
-      <button>-</button>
-      <button>+</button>
+      <button (click)="agregar('/')" type="button" value="/">&divide;</button>
+      <button (click)="agregar('*')" type="button" value="*">&times;</button>
+      <button (click)="agregar('-')" type="button" value="-">-</button>
+      <button (click)="agregar('+')" type="button" value="+">+</button>
     </div>
 
     <div class="numeros">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button><i class="fa-regular fa-calendar"></i></button>
-      <button>0</button>
-      <button>.</button>
+      <button (click)="agregar('1')" type="button" value="1">
+        {{ numeros[1] }}
+      </button>
+      <button (click)="agregar('2')" type="button" value="2">
+        {{ numeros[2] }}
+      </button>
+      <button (click)="agregar('3')" type="button" value="3">
+        {{ numeros[3] }}
+      </button>
+      <button (click)="agregar('4')" type="button" value="4">
+        {{ numeros[4] }}
+      </button>
+      <button (click)="agregar('5')" type="button" value="5">
+        {{ numeros[5] }}
+      </button>
+      <button (click)="agregar('6')" type="button" value="6">
+        {{ numeros[6] }}
+      </button>
+      <button (click)="agregar('7')" type="button" value="7">
+        {{ numeros[7] }}
+      </button>
+      <button (click)="agregar('8')" type="button" value="8">
+        {{ numeros[8] }}
+      </button>
+      <button (click)="agregar('9')" type="button" value="9">
+        {{ numeros[9] }}
+      </button>
+      <button (click)="agregar('')" type="button">
+        <i class="fa-regular fa-calendar"></i>
+      </button>
+      <button (click)="agregar('0')" type="button" value="0">
+        {{ numeros[0] }}
+      </button>
+      <button (click)="agregar('.')" type="button" value=".">.</button>
     </div>
     <div class="operaciones">
-      <button><i class="fa-solid fa-delete-left"></i></button>
-      <button>c</button>
-      <button><i class="fa-solid fa-check"></i></button>
+      <button type="button" value="remover">
+        <i class="fa-solid fa-delete-left"></i>
+      </button>
+      <button (click)="limpiar()" type="button" value="all-clear">c</button>
+      <button (click)="agregar('=')" type="button" value="=" class="check">
+        <i class="fa-solid fa-check"></i>
+      </button>
     </div>
-  </form>
+  </div>
   <p class="footer">Thursday March, 10, 2022</p>
 </div>
