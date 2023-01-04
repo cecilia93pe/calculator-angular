@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./calculator-view.component.css']
 })
 export class CalculatorViewComponent {
-
+  options: Intl.DateTimeFormatOptions = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  };
+  today = new Date()
+  result: number = 45.9
+  date: any = this.today.toLocaleDateString("en-US", this.options)
 }

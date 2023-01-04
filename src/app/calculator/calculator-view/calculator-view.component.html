@@ -1,2 +1,43 @@
 <app-header></app-header>
-<p>calculator-view works!</p>
+
+<main class="calculator">
+  <div class="calculator-head">
+    <div class="icon-shopping">
+      <i class="fa-solid fa-cart-shopping"></i>
+    </div>
+    <div class="">
+      <p class="subtitle">Add expense to</p>
+      <h1 class="title">Groceries</h1>
+    </div>
+  </div>
+  <p class="calculator-result">$ {{ result }}</p>
+  <div class="calculator-actions">
+    <button class="button button--operator">&divide;</button>
+    <button class="button">1</button>
+    <button class="button">2</button>
+    <button class="button">3</button>
+    <button class="button">
+      <i class="icon-delete fa-solid fa-delete-left"></i>
+    </button>
+    <button class="button button--operator">&times;</button>
+    <button class="button">4</button>
+    <button class="button">5</button>
+    <button class="button">6</button>
+    <button class="button">C</button>
+    <button class="button button--operator">&minus;</button>
+    <button class="button">7</button>
+    <button class="button">8</button>
+    <button class="button">9</button>
+    <button class="button button--check">
+      <i class="icon-check fa-solid fa-check"></i>
+    </button>
+    <button class="button button--operator">&plus;</button>
+    <button class="button">
+      <i class="icon-calendar fa-regular fa-calendar"></i>
+    </button>
+    <button class="button">0</button>
+    <button class="button">.</button>
+    <p class="date">{{ date }}</p>
+
+  </div>
+</main>
