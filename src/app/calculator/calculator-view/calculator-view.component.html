@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="resultado">
-      <p>{{ salida }}</p>
+      <p ngModel="cambio">{{ salida }}</p>
     </div>
   </div>
   <div class="content">
@@ -56,12 +56,20 @@
       <button (click)="agregar('.')" type="button" value=".">.</button>
     </div>
     <div class="operaciones">
-      <button type="button" value="remover">
+      <button (click)="remover()" type="button" value="remover">
         <i class="fa-solid fa-delete-left"></i>
       </button>
       <button (click)="limpiar()" type="button" value="all-clear">c</button>
-      <button (click)="agregar('=')" type="button" value="=" class="check">
-        <i class="fa-solid fa-check"></i>
+      <button
+        ngClass="cambio"
+        (click)="agregar('=')"
+        type="button"
+        value="="
+        class="check"
+      >
+        <i class="{{ claseIcon }}"></i>
+        <!-- <i class="fa-solid fa-check"></i> -->
+        <!-- <i class="fa-solid fa-equals"></i> -->
       </button>
     </div>
   </div>

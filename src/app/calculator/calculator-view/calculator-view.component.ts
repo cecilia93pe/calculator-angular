@@ -14,13 +14,23 @@ export class CalculatorViewComponent {
   private resultado: number = 0;
   private operaciones: string[] = ['+', '-', '*', '/'];
   salida: string = '';
+  claseIcon: string = 'fa-solid fa-check';
 
   //--
   agregar(valor: string): void {
     if (this.operaciones.includes(valor)) {
       this.operador = valor;
+
       this.numeroActual = Number(this.salida.substring(2));
       this.salida = this.salida + valor;
+      if (
+        this.salida.includes('+') ||
+        this.salida.includes('-') ||
+        this.salida.includes('*') ||
+        this.salida.includes('/')
+      ) {
+        this.claseIcon = 'fa-solid fa-equals';
+      }
     } else if (valor === '=') {
       console.log(this.salida.split(this.operador)[1].substring(2));
       this.numeroAnterior = Number(
@@ -36,6 +46,7 @@ export class CalculatorViewComponent {
     } else {
       this.salida = this.salida + valor;
     }
+    console.log(this.salida);
   }
 
   //---
@@ -61,6 +72,11 @@ export class CalculatorViewComponent {
       this.operador,
       this.resultado
     );
+  }
+
+  //-----
+  remover(): void {
+    this.salida = this.salida.slice(0, this.salida.length - 1);
   }
 
   //---

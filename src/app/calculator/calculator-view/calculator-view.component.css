@@ -68,6 +68,10 @@ button {
   font-weight: 400;
 }
 
+button:hover {
+  background-color: #e7e8ea;
+}
+
 .content {
   display: grid;
   grid-template-columns: 50px 150px 50px;
