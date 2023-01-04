@@ -16,7 +16,6 @@ export class CalculatorViewComponent {
   salida: string = '';
   claseIcon: string = 'fa-solid fa-check';
 
-  //--
   agregar(valor: string): void {
     if (this.operaciones.includes(valor)) {
       this.operador = valor;
@@ -46,6 +45,9 @@ export class CalculatorViewComponent {
     } else {
       this.salida = this.salida + valor;
     }
+    if (this.salida.includes('S/00') || this.salida.includes('..')) {
+      this.salida = this.salida.slice(0, this.salida.length - 1);
+    }
   }
 
   //---
@@ -74,12 +76,10 @@ export class CalculatorViewComponent {
     );
   }
 
-  //-----
   remover(): void {
     this.salida = this.salida.slice(0, this.salida.length - 1);
   }
 
-  //---
   limpiar(): void {
     this.salida = '0';
   }
