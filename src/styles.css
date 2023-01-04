@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: inter-regular;
+  src: url('./assets/fonts/inter-regular.ttf');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --blue-light: #07b6d5;
+  --gray-light: #f7f9f9;
+  --gray-light-strong: #f3f4f6;
+  --black: #4b5563;
+}
+
+button {
+  border: 0;
+  background-color: white;
+}
+
+body {
+  color: #4b5563;
+  font-family: inter-regular;
+}

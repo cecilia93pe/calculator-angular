@@ -1,0 +1,94 @@
+.calculator {
+  width: 320px;
+  margin: 0 auto;
+}
+
+.calculator-head {
+  background-color: var(--blue-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  grid-gap: 1px;
+}
+
+.icon-shopping {
+  border-radius: 100%;
+  background-color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.icon-shopping i{
+  color: var(--blue-light);
+  width: 18px;
+
+}
+
+.title {
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.subtitle {
+  font-size: 12px;
+}
+
+.calculator-result {
+  font-size: 25px;
+  line-height: 70px;
+  background-color: white;
+  text-align: center;
+  border-width: 0 2px;
+  border-style: solid;
+  border-color: var(--gray-light-strong);
+}
+
+.button {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--black);
+  font-size: 25px;
+  line-height: 54px;
+}
+
+.button--operator {
+  background-color: var(--gray-light);
+}
+
+.calculator-actions {
+  background-color: var(--gray-light-strong);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 1px;
+  padding: 1px;
+}
+
+.button--check {
+  background-color: var(--blue-light);
+  width: 100%;
+  height: 100%;
+  grid-area: 3 / 5 / 5 / 6
+}
+
+.button--check{
+  color: white
+}
+
+.date {
+  grid-area: 6 / 1 / 6 / 6;
+  background-color: var(--gray-light);
+  padding: 8px 70px;
+  font-size: 12px;
+}
+
+.icon-delete,
+.icon-calendar {
+  color: var(--black);
+}
