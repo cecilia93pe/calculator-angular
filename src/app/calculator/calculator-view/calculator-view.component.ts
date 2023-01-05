@@ -29,17 +29,16 @@ export class CalculatorViewComponent {
     '−': '-',
     '+': '+'
   }
-
   category: CategoryType = {
     name: 'Groceries',
     color: '#3efa30',
     icon: 'iconName'
   }
 
-  previousNumber: string = ''
   currentNumber: string | null = null
   result: string = ''
   formatResult: string = ''
+  isSubmit: boolean = false
 
   handleClickButton = ($event: any) => {
     $event.stopPropagation()
@@ -47,77 +46,35 @@ export class CalculatorViewComponent {
     const action = element.dataset.calculator
 
     if (this.numbers.includes(action)) {
-      if (this.currentNumber !== '0') {
-        if (this.currentNumber === null) {
-          this.currentNumber = action
-        } else {
-          this.currentNumber += action
-        }
-        this.result = this.result + action
-        this.formatResult = this.formatResult + action
-      }
+      this.addNumber(action)
     }
+
     if ( action === 'decimal' ) {
-        if (this.currentNumber && this.currentNumber.indexOf('.') < 0) {
-
-          this.currentNumber += '.'
-          this.result = this.result + '.'
-          this.formatResult = this.formatResult + '.'
-        }
-
-      if (this.currentNumber === null) {
-        if (this.formatResult.length === 0) {
-          this.currentNumber = '0.'
-          this.result = this.result + '0.'
-          this.formatResult = this.formatResult + '0.'
-        }
-      }
+      this.addDecimal()
     }
-    console.log(this.currentNumber, 'current')
+
     if (this.operators.includes(action) && this.currentNumber) {
       this.buildedResult(action)
       this.currentNumber = null
     }
 
     if (action === 'calculate') {
-      const lastElement = this.formatResult.slice(-1)
-      console.log(this.currentNumber, 'calculat')
-      if (lastElement !== ' ' && lastElement !== '.') {
-        const resultAll = String(eval(this.result))
-
-        if (resultAll.split('.').length === 1) {
-
-          this.formatResult = String(eval(this.result))
-        }else {
-
-          this.formatResult = String(Number(resultAll).toFixed(2))
-        }
-
-        this.currentNumber = this.formatResult
-      }
+      this.calculate()
     }
 
     if (action === 'clearAll') {
-      this.formatResult = ''
-      this.result = ''
-      this.currentNumber = null
+      this.clearAll()
     }
 
     if (action === 'clear') {
-      const lastElement = this.formatResult.slice(-1)
-      if (lastElement === ' ') {
-        this.formatResult = this.formatResult.slice(0, -3)
-        console.log('1')
-      } else {
-        this.formatResult = this.formatResult.slice(0, -1)
-        console.log('2')
-      }
+      this.clearResults()
     }
+    this.setIsSubmit()
   }
 
   buildedResult = (operator: string) => {
     const lastElement = this.formatResult.slice(-1)
-    console.log(this.formatResult.split(' '), operator)
+
     let isCanAddOperator: boolean = true
 
     this.formatResult.split(' ').forEach((item) => {
@@ -132,4 +89,68 @@ export class CalculatorViewComponent {
     }
   }
 
+  setIsSubmit = () => {
+    if (this.formatResult.split(' ').length === 3 && this.formatResult.split(' ')[2] !== '') {
+      this.isSubmit = true
+    } else {
+      this.isSubmit = false
+    }
+  }
+
+  clearResults = () => {
+    const lastElement = this.formatResult.slice(-1)
+    if (lastElement === ' ') {
+      this.formatResult = this.formatResult.slice(0, -3)
+    } else {
+      this.formatResult = this.formatResult.slice(0, -1)
+    }
+  }
+
+  clearAll = () => {
+    this.formatResult = ''
+    this.result = ''
+    this.currentNumber = null
+  }
+
+  calculate = () => {
+    const lastElement = this.formatResult.slice(-1)
+    if (lastElement !== ' ' && lastElement !== '.') {
+      const resultAll = String(eval(this.result))
+
+      if (resultAll.split('.').length === 1) {
+        this.formatResult = String(eval(this.result))
+      } else {
+        this.formatResult = String(Number(resultAll).toFixed(2))
+      }
+      this.currentNumber = this.formatResult
+    }
+  }
+
+  addDecimal = () => {
+    if (this.currentNumber && this.currentNumber.indexOf('.') < 0) {
+      this.currentNumber += '.'
+      this.result = this.result + '.'
+      this.formatResult = this.formatResult + '.'
+    }
+
+    if (this.currentNumber === null) {
+      if (this.formatResult.length === 0) {
+        this.currentNumber = '0.'
+        this.result = this.result + '0.'
+        this.formatResult = this.formatResult + '0.'
+      }
+    }
+  }
+
+  addNumber = (action: string) => {
+    if (this.currentNumber !== '0') {
+      if (this.currentNumber === null) {
+        this.currentNumber = action
+      } else {
+        this.currentNumber += action
+      }
+      this.result = this.result + action
+      this.formatResult = this.formatResult + action
+    }
+  }
 }
