@@ -40,12 +40,15 @@
 
 .calculator-result {
   font-size: 25px;
-  line-height: 70px;
   background-color: white;
   text-align: center;
   border-width: 0 2px;
   border-style: solid;
   border-color: var(--gray-light-strong);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button {
