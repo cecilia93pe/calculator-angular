@@ -12,7 +12,7 @@ export class CalculatorViewComponent {
   private numeroAnterior: number = 0;
   private operador: string = '';
   private resultado: number = 0;
-  private operaciones: string[] = ['+', '-', '*', '/'];
+  private operaciones: string[] = ['+', '-', '*', '÷'];
   salida: string = '';
   claseIcon: string = 'fa-solid fa-check';
 
@@ -26,7 +26,7 @@ export class CalculatorViewComponent {
         this.salida.includes('+') ||
         this.salida.includes('-') ||
         this.salida.includes('*') ||
-        this.salida.includes('/')
+        this.salida.includes('÷')
       ) {
         this.claseIcon = 'fa-solid fa-equals';
       }
@@ -53,17 +53,25 @@ export class CalculatorViewComponent {
   //---
   calcular(): void {
     switch (this.operador) {
+      case '÷':
+        this.resultado = Number(
+          (this.numeroActual / this.numeroAnterior).toFixed(3)
+        );
+        break;
       case '+':
-        this.resultado = this.numeroActual + this.numeroAnterior;
+        this.resultado = Number(
+          (this.numeroActual + this.numeroAnterior).toFixed(3)
+        );
         break;
       case '-':
-        this.resultado = this.numeroActual - this.numeroAnterior;
+        this.resultado = Number(
+          (this.numeroActual - this.numeroAnterior).toFixed(3)
+        );
         break;
       case '*':
-        this.resultado = this.numeroActual * this.numeroAnterior;
-        break;
-      case '/':
-        this.resultado = this.numeroActual / this.numeroAnterior;
+        this.resultado = Number(
+          (this.numeroActual * this.numeroAnterior).toFixed(3)
+        );
         break;
     }
 
