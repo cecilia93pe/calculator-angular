@@ -7,36 +7,36 @@
     </div>
     <div class="">
       <p class="subtitle">Add expense to</p>
-      <h1 class="title">Groceries</h1>
+      <h1 class="title">{{ category.name }}</h1>
     </div>
   </div>
-  <p class="calculator-result">$ {{ result }}</p>
+  <p class="calculator-result">$ {{ formatResult || '0' }} </p>
   <div class="calculator-actions">
-    <button class="button button--operator">&divide;</button>
-    <button class="button">1</button>
-    <button class="button">2</button>
-    <button class="button">3</button>
-    <button class="button">
+    <button (click)="handleClickButton($event)" data-calculator="&divide;" class="button button--operator">&divide;</button>
+    <button (click)="handleClickButton($event)" data-calculator="1" class="button">1</button>
+    <button (click)="handleClickButton($event)" data-calculator="2" class="button">2</button>
+    <button (click)="handleClickButton($event)" data-calculator="3" class="button">3</button>
+    <button (click)="handleClickButton($event)" data-calculator="clear" class="button">
       <i class="icon-delete fa-solid fa-delete-left"></i>
     </button>
-    <button class="button button--operator">&times;</button>
-    <button class="button">4</button>
-    <button class="button">5</button>
-    <button class="button">6</button>
-    <button class="button">C</button>
-    <button class="button button--operator">&minus;</button>
-    <button class="button">7</button>
-    <button class="button">8</button>
-    <button class="button">9</button>
-    <button class="button button--check">
+    <button (click)="handleClickButton($event)" data-calculator="&times;" class="button button--operator">&times;</button>
+    <button (click)="handleClickButton($event)" data-calculator="4" class="button">4</button>
+    <button (click)="handleClickButton($event)" data-calculator="5" class="button">5</button>
+    <button (click)="handleClickButton($event)" data-calculator="6" class="button">6</button>
+    <button (click)="handleClickButton($event)" data-calculator="clearAll" class="button">C</button>
+    <button (click)="handleClickButton($event)" data-calculator="&minus;" class="button button--operator">&minus;</button>
+    <button (click)="handleClickButton($event)" data-calculator="7" class="button">7</button>
+    <button (click)="handleClickButton($event)" data-calculator="8" class="button">8</button>
+    <button (click)="handleClickButton($event)" data-calculator="9" class="button">9</button>
+    <button (click)="handleClickButton($event)" data-calculator="calculate" class="button button--check">
       <i class="icon-check fa-solid fa-check"></i>
     </button>
-    <button class="button button--operator">&plus;</button>
-    <button class="button">
+    <button (click)="handleClickButton($event)" data-calculator="&plus;" class="button button--operator">&plus;</button>
+    <button (click)="handleClickButton($event)" data-calculator="calendar" class="button">
       <i class="icon-calendar fa-regular fa-calendar"></i>
     </button>
-    <button class="button">0</button>
-    <button class="button">.</button>
+    <button (click)="handleClickButton($event)" data-calculator="0" class="button">0</button>
+    <button (click)="handleClickButton($event)" data-calculator="decimal" class="button">.</button>
     <p class="date">{{ date }}</p>
 
   </div>
