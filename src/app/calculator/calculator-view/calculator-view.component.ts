@@ -48,7 +48,11 @@ export class CalculatorViewComponent {
 
     if (this.numbers.includes(action)) {
       if (this.currentNumber !== '0') {
-        this.currentNumber += action
+        if (this.currentNumber === null) {
+          this.currentNumber = action
+        } else {
+          this.currentNumber += action
+        }
         this.result = this.result + action
         this.formatResult = this.formatResult + action
       }
@@ -69,6 +73,7 @@ export class CalculatorViewComponent {
         }
       }
     }
+    console.log(this.currentNumber, 'current')
     if (this.operators.includes(action) && this.currentNumber) {
       this.buildedResult(action)
       this.currentNumber = null
@@ -76,10 +81,19 @@ export class CalculatorViewComponent {
 
     if (action === 'calculate') {
       const lastElement = this.formatResult.slice(-1)
+      console.log(this.currentNumber, 'calculat')
+      if (lastElement !== ' ' && lastElement !== '.') {
+        const resultAll = String(eval(this.result))
 
-      if (lastElement !== ' ') {
+        if (resultAll.split('.').length === 1) {
 
-        this.formatResult = String(eval(this.result))
+          this.formatResult = String(eval(this.result))
+        }else {
+
+          this.formatResult = String(Number(resultAll).toFixed(2))
+        }
+
+        this.currentNumber = this.formatResult
       }
     }
 
@@ -102,7 +116,17 @@ export class CalculatorViewComponent {
   }
 
   buildedResult = (operator: string) => {
-    if (!this.formatResult.split(' ').includes(operator)) {
+    const lastElement = this.formatResult.slice(-1)
+    console.log(this.formatResult.split(' '), operator)
+    let isCanAddOperator: boolean = true
+
+    this.formatResult.split(' ').forEach((item) => {
+      if (this.operators.includes(item)) {
+        isCanAddOperator = false
+      }
+    })
+
+    if (isCanAddOperator && lastElement !== '.') {
       this.result += ` ${this.operatorsEval[operator]} `
       this.formatResult = this.formatResult + ' ' + operator + ' '
     }
